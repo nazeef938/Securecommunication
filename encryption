@@ -9,6 +9,8 @@ def encripted(text,k):#code for encrypting the message
             string=string+'%'
         elif char=='*':
             string=string+'*'
+        elif (ord(char)>=35) and (ord(char)<=45):
+            string+=chr(ord(char)) # appending other special character in the message.
         elif (ord(char)>=65) and (ord(char)<=90): #for uppercase letter
             string=string+chr((ord(char)+k-65)%26+65)
         elif (ord(char)>=97) and (ord(char)<=122):
@@ -27,6 +29,8 @@ def decrypted(message,key): #for decryption
             str+='*'
         elif i=='%':
             str+='%'
+        elif (ord(i)>=35) and (ord(i)<=45):
+            str+=chr(ord(i)) # appending other special character in the message.
         elif (ord(i)>=65) and (ord(i)<=90):
             str=str+chr((ord(i)-key-65)%26+65)
         elif (ord(i)>=97) and (ord(i)<=122):
