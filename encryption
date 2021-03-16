@@ -1,0 +1,50 @@
+def encripted(text,k):#code for encrypting the message
+    string=''
+    for char in text:
+        if char==' ':
+            string=string+'@'
+        elif char=='.':
+            string=string+'#'
+        elif char=='%':
+            string=string+'%'
+        elif char=='*':
+            string=string+'*'
+        elif (ord(char)>=65) and (ord(char)<=90): #for uppercase letter
+            string=string+chr((ord(char)+k-65)%26+65)
+        elif (ord(char)>=97) and (ord(char)<=122):
+            string=string+chr((ord(char)+k-97)%26+97) #for lowercase letter
+        else:
+            string=string+chr((ord(char)+k-48)%10+48) # for numeric 
+    return string
+def decrypted(message,key): #for decryption 
+    str=''
+    for i in message:
+        if i=='@':
+            str+=' '
+        elif i=='#':
+            str+='.'
+        elif i=='*':
+            str+='*'
+        elif i=='%':
+            str+='%'
+        elif (ord(i)>=65) and (ord(i)<=90):
+            str=str+chr((ord(i)-key-65)%26+65)
+        elif (ord(i)>=97) and (ord(i)<=122):
+            str=str+chr((ord(i)-key-97)%26+97)
+        else:
+            str=str+chr((ord(i)-key-48)%10+48)
+    return str
+print("Message Sender:")
+print("Hello Mit Cell:")
+k=int(input("Please enter k value to shift transform message:"))
+text=input("Now Please Type of Your Message= ")
+message=encripted(text,k)
+print("You send=",message)
+print("Message Receiver:")
+print("Hello Instructor:")
+print("You got a message:",message)
+key=int(input("To read this in original please type k value provided by Cell:-"))
+print("Original Message",decrypted(message,key))
+
+
+
